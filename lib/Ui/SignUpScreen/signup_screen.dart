@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:foodninja/Ui/SignUpScreen/signup_process.dart';
 
 import '../../Const/const.dart';
+import '../SignIn Screen/sign_in.dart';
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({Key? key}) : super(key: key);
 
@@ -14,7 +16,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
   TextEditingController passwordController=TextEditingController();
 
   bool selectIndex = false;
-
+  bool _isButtonPressed = false;
+  bool _isButtonPresseds = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -111,19 +114,49 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 children: [
                   Row(
                     children: [
-                    const Icon(Icons.check_circle,color: kPrimaryColor,),
-                      const SizedBox(width: 5,),
-                      Text('Keep Me Signed In',style: kTextStyle.copyWith(color: kSubTitleColor),),
+                      InkWell(
+                        onTap: (){
+                          setState(() {
+                            _isButtonPressed = !_isButtonPressed;
+                          });
+                        },
+                        child: _isButtonPressed ==true?const Icon(Icons.circle_outlined,color: kBorderColorTextField,): const Icon(
+                          Icons.check_circle,
+                          color: kPrimaryColor,
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 5,
+                      ),
+                      Text(
+                        'Keep Me Signed In',
+                        style: kTextStyle.copyWith(color: kSubTitleColor),
+                      ),
                     ],
                   ),
-
-       const SizedBox(height: 10,),
-
+                  const SizedBox(
+                    height: 10,
+                  ),
                   Row(
                     children: [
-                      const Icon(Icons.check_circle,color: kPrimaryColor,),
-                      const SizedBox(width: 5,),
-                      Text('Email Me About Special Pricing',style: kTextStyle.copyWith(color: kSubTitleColor),),
+                      InkWell(
+                        onTap: (){
+                          setState(() {
+                            _isButtonPresseds = !_isButtonPresseds;
+                          });
+                        },
+                        child: _isButtonPresseds ==true?const Icon(Icons.circle_outlined,color: kBorderColorTextField,): const Icon(
+                          Icons.check_circle,
+                          color: kPrimaryColor,
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 5,
+                      ),
+                      Text(
+                        'Email Me About Special Pricing',
+                        style: kTextStyle.copyWith(color: kSubTitleColor),
+                      ),
                     ],
                   ),
                 ],
@@ -132,10 +165,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
             const SizedBox(height: 20,),
             InkWell(
               onTap: (){
-                // Navigator.push(
-                //   context,
-                //   MaterialPageRoute(builder: (context) => const OnBoardingSecond()),
-                // );
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const SignUpProcess()),
+                );
               },
               child: Container(
                 height: 50,
@@ -148,7 +181,17 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
             const SizedBox(height: 20,),
 
-            Text('already have an account?',style: kTextStyle.copyWith(fontWeight: FontWeight.bold,color: kPrimaryColor),) ,
+            InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const SignInScreen()),
+                  );
+                },
+                child: Text(
+                  'already have an account?',
+                  style: kTextStyle.copyWith(fontWeight: FontWeight.bold, color: kPrimaryColor),
+                )),
           ],
         ),
       ),

@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:foodninja/Ui/Forget%20Password/forget_password.dart';
 import 'package:pinput/pinput.dart';
 
 import '../../Const/const.dart';
@@ -148,10 +149,10 @@ class _VerificationCodeState extends State<VerificationCode> {
             padding: const EdgeInsets.only(bottom: 50.0),
             child: InkWell(
               onTap: () {
-                // Navigator.push(
-                //   context,
-                //   MaterialPageRoute(builder: (context) => const UploadPreview()),
-                // );
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const ForgetPassword()),
+                );
               },
               child: Container(
                 height: 50,

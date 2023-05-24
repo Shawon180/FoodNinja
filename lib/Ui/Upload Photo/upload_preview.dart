@@ -81,6 +81,9 @@ class _UploadPreviewState extends State<UploadPreview> {
                           'images/Photo.png',
                           height: 180,
                         ),
+
+
+
                       ],
                     ),
                   ),

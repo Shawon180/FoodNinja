@@ -1,5 +1,8 @@
+
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:foodninja/Ui/Upload%20Photo/upload_preview.dart';
+import 'package:image_picker/image_picker.dart';
 
 import '../../Const/const.dart';
 class UploadPhoto extends StatefulWidget {
@@ -10,6 +13,17 @@ class UploadPhoto extends StatefulWidget {
 }
 
 class _UploadPhotoState extends State<UploadPhoto> {
+  final ImagePicker _picker = ImagePicker();
+  XFile? image;
+
+  Future<void> getImage() async {
+    image = await _picker.pickImage(source: ImageSource.gallery);
+    setState(() {});
+  }
+  Future<void> getImageCamera() async {
+    image = await _picker.pickImage(source: ImageSource.camera);
+    setState(() {});
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -71,6 +85,24 @@ class _UploadPhotoState extends State<UploadPhoto> {
                 padding: const EdgeInsets.only(left: 20.0,right: 20),
                 child: Column(
                   children: [
+
+                    Center(
+                      child: Container(
+                        height: 100,
+                        width: 100,
+                        alignment: Alignment.bottomRight,
+                        decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            border: Border.all(color: kPrimaryColor),
+                            image: image == null
+                                ? const DecorationImage(image: AssetImage('images/profile.png'), fit: BoxFit.cover)
+                                : DecorationImage(image: FileImage(File(image!.path)), fit: BoxFit.cover)),
+
+
+                      ),
+
+
+                    ),
                     Container(
 
                       alignment: Alignment.center,
@@ -79,9 +111,16 @@ class _UploadPhotoState extends State<UploadPhoto> {
                         padding: const EdgeInsets.all(15.0),
                         child: Column(
                           children: [
-                            Image.asset(
-                              'images/Gallery.png',
-                              height: 50,
+                            InkWell(
+                              onTap: (){
+                                setState(() {
+                                  getImage();
+                                });
+                              },
+                              child: Image.asset(
+                                'images/Gallery.png',
+                                height: 50,
+                              ),
                             ),
                             Text('From Gallery',style: kTextStyle.copyWith(fontWeight: FontWeight.bold),)
                           ],
@@ -99,9 +138,16 @@ class _UploadPhotoState extends State<UploadPhoto> {
                         padding: const EdgeInsets.all(15.0),
                         child: Column(
                           children: [
-                            Image.asset(
-                              'images/camera.png',
-                              height: 50,
+                            InkWell(
+                              onTap: (){
+                                setState(() {
+                                  getImageCamera();
+                                });
+                              },
+                              child: Image.asset(
+                                'images/camera.png',
+                                height: 50,
+                              ),
                             ),
                             Text('Take Camera',style: kTextStyle.copyWith(fontWeight: FontWeight.bold),)
                           ],

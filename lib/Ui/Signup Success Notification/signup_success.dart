@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:foodninja/Ui/SignIn%20Screen/sign_in.dart';
 
 import '../../Const/const.dart';
-import '../Verification Code/verification_code.dart';
 class SignupSuccessNotification extends StatefulWidget {
   const SignupSuccessNotification({Key? key}) : super(key: key);
 
@@ -56,7 +56,7 @@ class _SignupSuccessNotificationState extends State<SignupSuccessNotification> {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const VerificationCode()),
+                    MaterialPageRoute(builder: (context) => const SignInScreen()),
                   );
                 },
                 child: Container(

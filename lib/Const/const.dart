@@ -23,13 +23,13 @@ InputDecoration kInputDecoration = const InputDecoration(
   fillColor: Colors.white70,
   enabledBorder: OutlineInputBorder(
     borderRadius: BorderRadius.all(
-      Radius.circular(6.0),
+      Radius.circular(30.0),
     ),
     borderSide: BorderSide(color: kBorderColorTextField, width: 1),
   ),
   focusedBorder: OutlineInputBorder(
     borderRadius: BorderRadius.all(
-      Radius.circular(6.0),
+      Radius.circular(30.0),
     ),
     borderSide: BorderSide(color: kBorderColorTextField, width: 1),
   ),

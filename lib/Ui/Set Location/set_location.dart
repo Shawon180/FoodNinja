@@ -89,14 +89,22 @@ class _SetLocationState extends State<SetLocation> {
                           ],
                         ),
                         const SizedBox(height: 20,),
-                        Container(
-                          height: 50,
-                          alignment: Alignment.center,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(23),
-                              color: const Color(0xffF6F6F6)
+                        InkWell(
+                          // onTap: () {
+                          //   Navigator.push(
+                          //     context,
+                          //     MaterialPageRoute(builder: (context) => const LocationScreen()),
+                          //   );
+                          // },
+                          child: Container(
+                            height: 50,
+                            alignment: Alignment.center,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(23),
+                                color: const Color(0xffF6F6F6)
+                            ),
+                            child:  Text('Set Location',style: kTextStyle.copyWith(fontWeight: FontWeight.bold,color: kTitleColor),),
                           ),
-                          child:  Text('Set Location',style: kTextStyle.copyWith(fontWeight: FontWeight.bold,color: kTitleColor),),
                         )
                       ],
                     ),

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:foodninja/Ui/Home/nav_bar.dart';
 
 import '../../Const/const.dart';
+import '../Forget Password/forget_password.dart';
 class SignInScreen extends StatefulWidget {
   const SignInScreen({Key? key}) : super(key: key);
 
@@ -151,14 +153,21 @@ class _SignInScreenState extends State<SignInScreen> {
 
             const SizedBox(height: 20,),
 
-            Text('Forgot Your Password?',style: kTextStyle.copyWith(fontWeight: FontWeight.bold,color: kPrimaryColor),) ,
+            InkWell(
+                onTap: (){
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const ForgetPassword()),
+                  );
+                },
+                child: Text('Forgot Your Password?',style: kTextStyle.copyWith(fontWeight: FontWeight.bold,color: kPrimaryColor),)) ,
             const SizedBox(height: 20,),
             InkWell(
               onTap: (){
-                // Navigator.push(
-                //   context,
-                //   MaterialPageRoute(builder: (context) => const OnBoardingSecond()),
-                // );
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const Navbar()),
+                );
               },
               child: Container(
                 height: 50,
