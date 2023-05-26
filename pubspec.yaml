@@ -34,6 +34,8 @@ dependencies:
   pinput: ^2.2.31
   image_picker: ^0.8.6
   persistent_bottom_nav_bar: ^5.0.2
+  chat_bubbles: ^1.4.1
+  audioplayers: ^4.0.1
 
 
 

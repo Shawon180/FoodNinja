@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 const kPrimaryColor = Color(0xff53E88B);
+const kSecondaryColor=Color(0xffDA6317);
 const kSubSubTitleColor = Color(0xff6C6C6C);
 const kTitleColor = Color(0xff1A1A1A);
 const kSubTitleColor = Color(0xff595959);
 const kDarkWhite = Color(0xff6B6B6B);
 const kWhite = Color(0xFFFFFFFF);
+const kBackgroundColor = Color(0xfff5f6fa);
 const kBorderColorTextField = Color(0xffE8E8E8);
 const ratingBarColor = Color(0xFFFFB33E);
 const kIconColor = Color(0xFF959595);

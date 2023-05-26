@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:foodninja/Ui/Detail%20product/detail_product.dart';
+import 'package:foodninja/Ui/Home/filter_screen.dart';
+import 'package:foodninja/Ui/Home/notification_screen.dart';
+import 'package:foodninja/Ui/Home/search_screen.dart';
 
 import '../../Const/const.dart';
 
@@ -40,7 +44,13 @@ class _HomeScreenState extends State<HomeScreen> {
                           radius: 28,
                           backgroundColor: kWhite,
                           child: IconButton(
-                              onPressed: () {},
+                              onPressed: () {
+
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (context) => const NotificationScreen()),
+                                );
+                              },
                               icon: const Icon(
                                 Icons.notifications_none,
                                 color: Colors.redAccent,
@@ -63,6 +73,12 @@ class _HomeScreenState extends State<HomeScreen> {
                         height: 50,
                         width: MediaQuery.of(context).size.width / 1.4,
                         child: TextFormField(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => const SearchScreen()),
+                            );
+                          },
                           decoration: kInputDecoration.copyWith(
                             hintText: 'What do you want to order?',
                             fillColor: const Color(0xffF9A84D).withOpacity(0.1),
@@ -89,7 +105,10 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       InkWell(
                         onTap: () {
-                          Navigator.pop(context);
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => const FilterScreen()),
+                          );
                         },
                         child: Container(
                           height: 50,
@@ -149,26 +168,34 @@ class _HomeScreenState extends State<HomeScreen> {
                         itemBuilder: (_, index) {
                           return Padding(
                             padding: const EdgeInsets.only(left: 8.0),
-                            child: Container(
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(22),
-                                color: kWhite,
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsets.all(15.0),
-                                child: Column(
-                                  children: [
-                                    Image.asset(
-                                      'images/ResturantImage.png',
-                                      width: 96,
-                                      height: 73,
-                                    ),
-                                    Text(
-                                      'Vegan Resto',
-                                      style: kTextStyle.copyWith(color: kTitleColor, fontSize: 16, fontWeight: FontWeight.bold),
-                                    ),
-                                    Text('12 Mins', style: kTextStyle.copyWith(color: kSubSubTitleColor)),
-                                  ],
+                            child: InkWell(
+                              onTap: (){
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (context) => const ProductDetails()),
+                                );
+                              },
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(22),
+                                  color: kWhite,
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(15.0),
+                                  child: Column(
+                                    children: [
+                                      Image.asset(
+                                        'images/ResturantImage.png',
+                                        width: 96,
+                                        height: 73,
+                                      ),
+                                      Text(
+                                        'Vegan Resto',
+                                        style: kTextStyle.copyWith(color: kTitleColor, fontSize: 16, fontWeight: FontWeight.bold),
+                                      ),
+                                      Text('12 Mins', style: kTextStyle.copyWith(color: kSubSubTitleColor)),
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),
@@ -257,6 +284,7 @@ const SizedBox(height: 10,),
                                 style: kTextStyle.copyWith(color: kTitleColor, fontSize: 16, fontWeight: FontWeight.bold),
                               ),
                               subtitle: Text('12 Mins', style: kTextStyle.copyWith(color: kSubSubTitleColor)),
+                              trailing:Text('\$15', style: kTextStyle.copyWith(color: kSecondaryColor,fontWeight: FontWeight.bold)),
                             ),
                           );
                         }),

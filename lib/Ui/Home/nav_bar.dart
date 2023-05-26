@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:foodninja/Ui/ChatScreen/chat.dart';
-import 'package:foodninja/Ui/ShoppingCart.dart';
+import 'package:foodninja/Ui/CartScreen/ShoppingCart.dart';
 
 import '../../Const/const.dart';
 import '../Profile/profile.dart';
