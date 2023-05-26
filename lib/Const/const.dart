@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 const kPrimaryColor = Color(0xff53E88B);
+const kSecondaryColor=Color(0xffDA6317);
 const kSubSubTitleColor = Color(0xff6C6C6C);
 const kTitleColor = Color(0xff1A1A1A);
 const kSubTitleColor = Color(0xff595959);

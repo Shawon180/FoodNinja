@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:foodninja/Ui/Home/filter_screen.dart';
+import 'package:foodninja/Ui/Home/search_screen.dart';
 
 import '../../Const/const.dart';
 
@@ -63,6 +65,12 @@ class _HomeScreenState extends State<HomeScreen> {
                         height: 50,
                         width: MediaQuery.of(context).size.width / 1.4,
                         child: TextFormField(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => const SearchScreen()),
+                            );
+                          },
                           decoration: kInputDecoration.copyWith(
                             hintText: 'What do you want to order?',
                             fillColor: const Color(0xffF9A84D).withOpacity(0.1),
@@ -89,7 +97,10 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       InkWell(
                         onTap: () {
-                          Navigator.pop(context);
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => const FilterScreen()),
+                          );
                         },
                         child: Container(
                           height: 50,
@@ -257,6 +268,7 @@ const SizedBox(height: 10,),
                                 style: kTextStyle.copyWith(color: kTitleColor, fontSize: 16, fontWeight: FontWeight.bold),
                               ),
                               subtitle: Text('12 Mins', style: kTextStyle.copyWith(color: kSubSubTitleColor)),
+                              trailing:Text('\$15', style: kTextStyle.copyWith(color: kSecondaryColor,fontWeight: FontWeight.bold)),
                             ),
                           );
                         }),
