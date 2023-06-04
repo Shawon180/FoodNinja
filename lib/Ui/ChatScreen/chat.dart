@@ -44,7 +44,7 @@ class _ChatScreenState extends State<ChatScreen> {
                         width: 45,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
-                          color: const Color(0xffF9A84D).withOpacity(0.1),
+                          color: const Color(0xffF9A84D),
                         ),
                         child: const Icon(
                           Icons.arrow_back_ios_new,

@@ -36,7 +36,8 @@ dependencies:
   persistent_bottom_nav_bar: ^5.0.2
   chat_bubbles: ^1.4.1
   audioplayers: ^4.0.1
-
+  flutter_slidable: ^3.0.0
+  share_plus: ^7.0.2
 
 
   # The following adds the Cupertino Icons font to your application.

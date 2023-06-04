@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:share_plus/share_plus.dart';
 
 import '../../Const/const.dart';
 
@@ -14,7 +16,7 @@ class _CartScreenState extends State<CartScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: Padding(
-        padding: const EdgeInsets.only(left: 8.0,right: 8),
+        padding: const EdgeInsets.only(left: 8.0, right: 8),
         child: Container(
           height: 200,
           width: double.infinity,
@@ -70,7 +72,6 @@ class _CartScreenState extends State<CartScreen> {
                         ),
                       ],
                     ),
-
                     const SizedBox(
                       height: 6,
                     ),
@@ -79,11 +80,11 @@ class _CartScreenState extends State<CartScreen> {
                       children: [
                         Text(
                           'Total',
-                          style: kTextStyle.copyWith(color: kWhite, fontWeight: FontWeight.bold,fontSize: 20),
+                          style: kTextStyle.copyWith(color: kWhite, fontWeight: FontWeight.bold, fontSize: 20),
                         ),
                         Text(
                           '150 \$',
-                          style: kTextStyle.copyWith(color: kWhite, fontWeight: FontWeight.bold,fontSize: 20),
+                          style: kTextStyle.copyWith(color: kWhite, fontWeight: FontWeight.bold, fontSize: 20),
                         ),
                       ],
                     ),
@@ -91,15 +92,15 @@ class _CartScreenState extends State<CartScreen> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 8.0,right: 8),
+                padding: const EdgeInsets.only(left: 8.0, right: 8),
                 child: Container(
                   height: 50,
                   alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                    color: kWhite,
-                    borderRadius: BorderRadius.circular(15)
+                  decoration: BoxDecoration(color: kWhite, borderRadius: BorderRadius.circular(15)),
+                  child: Text(
+                    'Place My Order ',
+                    style: kTextStyle.copyWith(color: kPrimaryColor, fontWeight: FontWeight.bold),
                   ),
-                  child: Text('Place My Order ',style: kTextStyle.copyWith(color: kPrimaryColor,fontWeight: FontWeight.bold),),
                 ),
               )
             ],
@@ -151,94 +152,132 @@ class _CartScreenState extends State<CartScreen> {
                 ),
               ),
             ),
-            ListView.builder(
-                itemCount: 3,
+
+            StatefulBuilder(builder: (BuildContext context, void Function(void Function()) setState) { return  ListView.builder(
+                physics: NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
+                itemCount: 4,
                 itemBuilder: (_, index) {
                   return Padding(
                     padding: const EdgeInsets.only(bottom: 8.0),
-                    child: Container(
-                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(22), color: kWhite),
-                      child: Padding(
-                        padding: const EdgeInsets.all(12.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    child: Slidable(
+                        key:  ValueKey(1),
+                        endActionPane: ActionPane(
+                          motion:  ScrollMotion(),
+                          dismissible: DismissiblePane(onDismissed: () {}),
                           children: [
-                            Row(
-                              children: [
-                                Image.asset(
-                                  'images/PhotoMenu.png',
-                                  width: 62,
-                                  height: 62,
-                                ),
-                                const SizedBox(
-                                  width: 10,
-                                ),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      'Spacy fresh crab',
-                                      style: kTextStyle.copyWith(
-                                        color: kTitleColor,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                    Text(
-                                      'Waroenk kita',
-                                      style: kTextStyle.copyWith(color: kSubSubTitleColor),
-                                    ),
-                                    Text(
-                                      '\$ 35',
-                                      style: kTextStyle.copyWith(color: kPrimaryColor, fontWeight: FontWeight.bold, fontSize: 18),
-                                    ),
-                                  ],
-                                ),
-                              ],
+                            SlidableAction(
+                              onPressed: (contex){
+                                Share.share('check out my website https://example.com', subject: 'Look what I made!');
+                              },
+
+                              backgroundColor: const Color(0xFF21B7CA),
+                              foregroundColor: Colors.white,
+                              icon: Icons.share,
+                              borderRadius: BorderRadius.circular(22),
+                              label: 'Share',
                             ),
-                            Row(
-                              children: [
-                                Container(
-                                    height: 40,
-                                    width: 40,
-                                    alignment: Alignment.topCenter,
-                                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(12), color: kPrimaryColor.withOpacity(0.1)),
-                                    child: IconButton(
-                                        onPressed: () {},
-                                        icon: Text(
-                                          '-',
-                                          style: kTextStyle.copyWith(color: kPrimaryColor, fontSize: 30),
-                                        ))),
-                                const SizedBox(
-                                  width: 10,
-                                ),
-                                Text(
-                                  '1',
-                                  style: kTextStyle.copyWith(color: kTitleColor, fontSize: 20),
-                                ),
-                                const SizedBox(
-                                  width: 10,
-                                ),
-                                Container(
-                                    height: 40,
-                                    width: 40,
-                                    alignment: Alignment.topCenter,
-                                    decoration: BoxDecoration(color: kPrimaryColor, borderRadius: BorderRadius.circular(10)),
-                                    child: IconButton(
-                                        onPressed: () {},
-                                        icon: const Icon(
-                                          Icons.add,
-                                          color: kWhite,
-                                        ))),
-                              ],
-                            )
+                            SlidableAction(
+                              onPressed: (contex){
+
+                              },
+
+                              backgroundColor: const Color(0xFFFE4A49),
+                              foregroundColor: Colors.white,
+                              icon: Icons.delete,
+                              borderRadius: BorderRadius.circular(22),
+                              label: 'Delete',
+                              spacing: 5,
+                            ),
+
                           ],
                         ),
-                      ),
-                    ),
+                        child: Padding(
+                          padding: const EdgeInsets.only(right: 10.0, left: 10),
+                          child: Container(
+                            decoration: BoxDecoration(borderRadius: BorderRadius.circular(22), color: kWhite),
+                            child: Padding(
+                              padding: const EdgeInsets.all(12.0),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Row(
+                                    children: [
+                                      Image.asset(
+                                        'images/PhotoMenu.png',
+                                        width: 62,
+                                        height: 62,
+                                      ),
+                                      const SizedBox(
+                                        width: 10,
+                                      ),
+                                      Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            'Spacy fresh crab',
+                                            style: kTextStyle.copyWith(
+                                              color: kTitleColor,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                          Text(
+                                            'Waroenk kita',
+                                            style: kTextStyle.copyWith(color: kSubSubTitleColor),
+                                          ),
+                                          Text(
+                                            '\$ 35',
+                                            style: kTextStyle.copyWith(color: kPrimaryColor, fontWeight: FontWeight.bold, fontSize: 18),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                  Row(
+                                    children: [
+                                      Container(
+                                          height: 40,
+                                          width: 40,
+                                          alignment: Alignment.topCenter,
+                                          decoration: BoxDecoration(borderRadius: BorderRadius.circular(12), color: kPrimaryColor.withOpacity(0.1)),
+                                          child: IconButton(
+                                              onPressed: () {},
+                                              icon: Text(
+                                                '-',
+                                                style: kTextStyle.copyWith(color: kPrimaryColor, fontSize: 30),
+                                              ))),
+                                      const SizedBox(
+                                        width: 10,
+                                      ),
+                                      Text(
+                                        '1',
+                                        style: kTextStyle.copyWith(color: kTitleColor, fontSize: 20),
+                                      ),
+                                      const SizedBox(
+                                        width: 10,
+                                      ),
+                                      Container(
+                                          height: 40,
+                                          width: 40,
+                                          alignment: Alignment.topCenter,
+                                          decoration: BoxDecoration(color: kPrimaryColor, borderRadius: BorderRadius.circular(10)),
+                                          child: IconButton(
+                                              onPressed: () {},
+                                              icon: const Icon(
+                                                Icons.add,
+                                                color: kWhite,
+                                              ))),
+                                    ],
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
+                        )),
                   );
-                })
+                }); },
+
+            )
           ],
         ),
       ),
