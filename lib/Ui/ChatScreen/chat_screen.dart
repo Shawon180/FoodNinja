@@ -1,8 +1,9 @@
 import 'package:chat_bubbles/bubbles/bubble_normal.dart';
 import 'package:chat_bubbles/date_chips/date_chip.dart';
 import 'package:chat_bubbles/message_bars/message_bar.dart';
+
 import 'package:flutter/material.dart';
-import 'package:foodninja/Ui/ChatScreen/call_screen.dart';
+
 import '../../Const/const.dart';
 
 class ChatsScreen extends StatefulWidget {
@@ -80,41 +81,17 @@ class _ChatsScreenState extends State<ChatsScreen> {
                       'Anamwap',
                       style: kTextStyle.copyWith(color: kTitleColor, fontWeight: FontWeight.bold),
                     ),
-                    subtitle: Row(
-                      children: [
-                        Container(
-                          height:8,
-                          width: 8,
-                          alignment: Alignment.center,
-                          decoration: const BoxDecoration(
-                            color: kPrimaryColor,
-                            shape: BoxShape.circle
-                          ),
-                        ),
-                        const SizedBox(width: 4,),
-                        const Text('Online'),
-                      ],
-                    ),
+                    subtitle: const Text('Your Order Just Arrived!'),
                     trailing: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.start,
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        InkWell(
-                          onTap: (){
-                            Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(builder: (context) => const CallingScreen()),
-                            );
-                          },
-                          child: Container(
-                            height: 40,
-                            width: 40,
-                            alignment: Alignment.center,
-                            decoration: BoxDecoration(
-                              color: kPrimaryColor.withOpacity(0.1),
-                              shape: BoxShape.circle
-                            ),child: const Icon(Icons.call,color: kPrimaryColor,),
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 10.0),
+                          child: Text(
+                            '20:07',
+                            style: kTextStyle.copyWith(color: kBorderColorTextField),
                           ),
                         ),
                       ],
