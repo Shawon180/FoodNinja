@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:foodninja/Ui/Home/nav_bar.dart';
+import 'package:foodninja/Ui/SignUpScreen/signup_screen.dart';
 
 import '../../Const/const.dart';
 import '../Forget Password/forget_password.dart';
@@ -176,10 +177,29 @@ class _SignInScreenState extends State<SignInScreen> {
                 decoration: kBoxdecortion,
 
                 child: Text('Login',style: kTextStyle.copyWith(color: kWhite,fontWeight: FontWeight.bold),),),
-            )
+            ),
+
+
           ],
         ),
       ),
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text('Don\'t have an account? ',style: kTextStyle.copyWith(fontWeight: FontWeight.bold,color: kPrimaryColor),),
+            InkWell(
+                onTap: (){
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const SignUpScreen()),
+                  );
+                },
+                child: Text('SignUp',style: kTextStyle.copyWith(fontWeight: FontWeight.bold,color: kTitleColor),)),
+          ],
+        ),
+      ) ,
     );
   }
 }
